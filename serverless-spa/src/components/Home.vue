@@ -7,17 +7,18 @@
         </div>
     </div>
     
-    <div v-for" image in images" :key= "image.photo_id" class="photo pure-u-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3">
-        <img v-bind:src="img_url_base + image.photo_id + '.' + image.type.split('/')[1]">
+    <div v-for=" image in images" :key= "image.photo_id" class="photo pure-u-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3">
+        <a v-bind:href="image_url_base + image.photo_id+'.'+image.type.split('/')[1]" target="_blank">
+           <img v-bind:src="img_url_base + image.photo_id + '.' + image.type.split('/')[1]">
         </a>
     </div>
     
     <div class="pure-u-1 form-box" id="upload-image">
-        <dic class= "l-box">
+        <div class= "l-box">
             <h2>Upload a Photo</h2>
             <input v-on:change="onFileChange" type="file" name="file" placeholder="Photo from your computer" accept="image/*" required>
-            <botton v-on:click="uploadImage" class="pure-button-primary">アップロード</botton>
-        </dic>
+            <botton v-on:click="uploadImage" class="pure-button pure-button-primary">アップロード</botton>
+        </div>
     </div>
 </div>    
 </template>
