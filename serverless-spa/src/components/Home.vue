@@ -26,7 +26,7 @@
 <script>
 
 import axios from "axios";
-import appConfig from '../config';
+import appConfig from '../config.js';
 
 const API_BASE_URL = appConfig.ApiBaseUrl;
 const IMAGE_BASE_URL = appConfig.ImageBaseUrl;
@@ -77,7 +77,6 @@ export default{
                 )
                 .then(function(res) {
                     json = JSON.parse(JSON.stringify(res.data));
-                    
                     axios.put(
                         json["signed_url"], file, {
                             headers: {
@@ -108,6 +107,7 @@ export default{
                 
             .catch(function(error) {
                 alert(error);
+                console.log(error);
             });
         }
         

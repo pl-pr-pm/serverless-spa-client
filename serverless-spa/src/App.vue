@@ -8,6 +8,11 @@
             <li class="pure-menu-item"><a href="#upload-image" class="pure-menu-link">Upload</a></li>
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">Login</a></li>
+            <li class="pure-menu-item">
+            <router-link v-if="isLoggedIn" tp="/logout" class="pure-menu-link">Logout</router-link>
+            <router-link v-if="!isLoggedIn" tp="/login" class="pure-menu-link">Login</router-link>
+            </li>
+            
         </ul>
       </div>
     </div>
@@ -19,9 +24,22 @@
 </template>
 
 <script>
+
+import auth from './auth'
+
 export default {
-  name: 'App'
+  data () {
+    return {
+      isLoggedIn: auth.loggingIn()
+    }
+  },
+  created: function() {
+    auth.onChange = isLoggedIn => {
+      this.isLoggedIn = isLoggedIn
+    }
+  }
 }
+
 </script>
 
 <style>
